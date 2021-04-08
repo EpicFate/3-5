@@ -25,7 +25,7 @@ public class LambdaStepsTest {
         Allure.link("https://github.com",url);
         Allure.parameter("Repository", REPOSITORY);
 
-        step("Открывем главную страницу", (step) -> {
+        step("Открывем главную страницу", () -> {
             open (url);
             step.parameter("name",url);
         });
@@ -34,7 +34,7 @@ public class LambdaStepsTest {
             $("#login_field").val(USER);
             $("#password").val(PASSWORD).pressEnter();
         });
-        step("Ищем репозиторий", (step) -> {
+        step("Ищем репозиторий", () -> {
             step.parameter("name",REPOSITORY);
             $(".header-search-input").val(REPOSITORY).pressEnter();
         });
@@ -50,7 +50,7 @@ public class LambdaStepsTest {
             $("#issue_body").val(IssueNameText);
             $(byText("Submit new issue")).click();
         });
-        step("Проверяем наличие Issue", () ->{
+        step("Проверяем наличие Issue", () -> {
             $("#show_issue").shouldHave(text(IssueNameText));
         });
     }
